@@ -1,0 +1,40 @@
+// =============================================================
+// components/_badges.scss
+// =============================================================
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+
+  &--todo      { background-color: var(--color-badge-todo-bg);       color: var(--color-badge-todo-text); }
+  &--inprogress{ background-color: var(--color-badge-inprogress-bg); color: var(--color-badge-inprogress-text); }
+  &--done      { background-color: var(--color-badge-done-bg);       color: var(--color-badge-done-text); }
+  &--blocked   { background-color: var(--color-badge-blocked-bg);    color: var(--color-badge-blocked-text); }
+  &--review    { background-color: var(--color-badge-review-bg);     color: var(--color-badge-review-text); }
+}
+
+.badge-priority {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+  }
+
+  &--low      { color: var(--color-priority-low);      &::before { background-color: var(--color-priority-low); } }
+  &--medium   { color: var(--color-priority-medium);   &::before { background-color: var(--color-priority-medium); } }
+  &--high     { color: var(--color-priority-high);     &::before { background-color: var(--color-priority-high); } }
+  &--critical { color: var(--color-priority-critical); &::before { background-color: var(--color-priority-critical); } }
+}

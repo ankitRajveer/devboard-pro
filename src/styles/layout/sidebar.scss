@@ -1,0 +1,184 @@
+// =============================================================
+// layout/_sidebar.scss
+// =============================================================
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--color-sidebar-bg);
+  border-right: 1px solid var(--color-sidebar-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width var(--transition-layout);
+
+  &.collapsed {
+    width: var(--sidebar-collapsed-width);
+
+    .sidebar__label,
+    .sidebar__logo-text,
+    .sidebar__section-title { display: none; }
+
+    .sidebar__nav-item { justify-content: center; }
+  }
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5);
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-sidebar-border);
+  text-decoration: none;
+  flex-shrink: 0;
+
+  &-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &-text {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-sidebar-logo-text);
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+  }
+}
+
+.sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sidebar-border) transparent;
+}
+
+.sidebar__section {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+
+  &:first-child { margin-top: 0; }
+}
+
+.sidebar__section-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-sidebar-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0 var(--space-3);
+  margin-bottom: var(--space-2);
+  white-space: nowrap;
+}
+
+.sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  color: var(--color-sidebar-text);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+  white-space: nowrap;
+  border: none;
+  background: none;
+  width: 100%;
+
+  &:hover {
+    background-color: var(--color-sidebar-hover-bg);
+    color: white;
+    text-decoration: none;
+  }
+
+  &.active {
+    background-color: var(--color-sidebar-active-bg);
+    color: var(--color-sidebar-active-text);
+  }
+
+  &__icon {
+    font-size: 1.125rem;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+  }
+
+  &__label { flex: 1; }
+
+  &__badge {
+    background-color: var(--color-primary-500);
+    color: white;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius-full);
+    min-width: 18px;
+    text-align: center;
+  }
+}
+
+.sidebar__footer {
+  padding: var(--space-4) var(--space-3);
+  border-top: 1px solid var(--color-sidebar-border);
+  flex-shrink: 0;
+}
+
+.sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  text-decoration: none;
+
+  &:hover { background-color: var(--color-sidebar-hover-bg); }
+
+  &-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--color-primary-400), var(--color-secondary-500));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    flex-shrink: 0;
+  }
+
+  &-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: white;
+    white-space: nowrap;
+  }
+
+  &-role {
+    font-size: var(--font-size-xs);
+    color: var(--color-sidebar-text-muted);
+    white-space: nowrap;
+  }
+}

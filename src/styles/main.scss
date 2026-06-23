@@ -1,0 +1,47 @@
+// =============================================================
+// main.scss  –  Global stylesheet entry point
+// Order matters: tokens → bootstrap overrides → bootstrap →
+//               reset → typography → layout → components
+// =============================================================
+
+// 1. Design tokens (CSS custom properties — light + dark)
+@use 'abstracts/tokens';
+
+// 2. Bootstrap variable overrides (must come BEFORE bootstrap import)
+@use 'abstracts/bootstrap-overrides' as *;
+
+// 3. Bootstrap 5
+@use 'bootstrap/scss/bootstrap';
+
+// 4. Our abstracts (mixins + functions available globally)
+@use 'abstracts/mixins' as *;
+
+// 5. Base reset & typography
+@use 'base/reset';
+@use 'base/typography';
+
+// 6. Layout styles
+@use 'layout/shell';
+@use 'layout/sidebar';
+@use 'layout/header';
+
+// 7. Shared component styles
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/badges';
+@use 'components/forms';
+@use 'components/tables';
+
+// ─── Google Fonts import ──────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+// ─── Bootstrap Icons ──────────────────────────────────────
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+// ─── Theme transition helper ──────────────────────────────
+// Smooth color transitions when toggling light/dark
+html {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}

@@ -1,0 +1,96 @@
+// =============================================================
+// layout/_shell.scss  –  App shell: sidebar + main area grid
+// =============================================================
+
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: var(--header-height) 1fr;
+  min-height: 100vh;
+  transition: grid-template-columns var(--transition-layout);
+
+  &.sidebar-collapsed {
+    grid-template-columns: var(--sidebar-collapsed-width) 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.app-sidebar {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  z-index: var(--z-sidebar);
+
+  @media (max-width: 768px) {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    transition: left var(--transition-layout);
+
+    &.open { left: 0; }
+  }
+}
+
+.app-header {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+
+  @media (max-width: 768px) {
+    grid-column: 1;
+  }
+}
+
+.app-main {
+  grid-column: 2;
+  grid-row: 2;
+  overflow-y: auto;
+  background-color: var(--color-bg-subtle);
+
+  @media (max-width: 768px) {
+    grid-column: 1;
+  }
+}
+
+.page-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+
+  @media (max-width: 768px) {
+    padding: var(--space-4);
+  }
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+
+  &__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    letter-spacing: -0.025em;
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+}

@@ -1,0 +1,114 @@
+// =============================================================
+// components/_cards.scss
+// =============================================================
+
+.db-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  transition:
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    background-color var(--transition-slow);
+
+  &:hover { box-shadow: var(--shadow-md); }
+
+  &--flat { box-shadow: none; }
+  &--interactive { cursor: pointer; }
+  &--sm { padding: var(--space-4); border-radius: var(--radius-lg); }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+  }
+
+  &__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+  }
+
+  &__body { }
+
+  &__footer {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border-default);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// KPI / stat card
+.stat-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: box-shadow var(--transition-base), background-color var(--transition-slow);
+
+  &:hover { box-shadow: var(--shadow-md); }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-medium);
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+
+    &--primary   { background-color: var(--color-primary-50);   color: var(--color-primary-600); }
+    &--success   { background-color: var(--color-success-50);   color: var(--color-success-600); }
+    &--warning   { background-color: var(--color-warning-50);   color: var(--color-warning-600); }
+    &--danger    { background-color: var(--color-danger-50);    color: var(--color-danger-600); }
+    &--info      { background-color: var(--color-info-50);      color: var(--color-info-600); }
+  }
+
+  &__value {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+
+  &__trend {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+
+    &--up   { color: var(--color-success-600); }
+    &--down { color: var(--color-danger-600); }
+    &--flat { color: var(--color-text-muted); }
+  }
+}

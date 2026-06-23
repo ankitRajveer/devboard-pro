@@ -1,0 +1,24 @@
+<div class="app-shell" [class.sidebar-collapsed]="sidebarCollapsed()">
+    <!-- Sidebar -->
+    <aside class="app-sidebar" [class.open]="sidebarOpen()">
+        <app-sidebar [collapsed]="sidebarCollapsed()" (toggleCollapse)="toggleSidebar()" />
+    </aside>
+
+    <!-- Header -->
+    <header class="app-header">
+        <app-header (menuClick)="toggleMobileSidebar()" (themeToggle)="themeService.toggle()"
+            [isDark]="themeService.isDark()" />
+    </header>
+
+    <!-- Main content -->
+    <main class="app-main">
+        <div class="page-container">
+            <router-outlet />
+        </div>
+    </main>
+
+    <!-- Mobile overlay -->
+    @if (sidebarOpen()) {
+    <div class="sidebar-overlay" (click)="sidebarOpen.set(false)"></div>
+    }
+</div>

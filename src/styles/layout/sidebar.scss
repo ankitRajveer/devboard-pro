@@ -19,7 +19,16 @@
     .sidebar__logo-text,
     .sidebar__section-title { display: none; }
 
-    .sidebar__nav-item { justify-content: center; }
+    .sidebar__nav-item {
+      justify-content: center;
+      overflow: hidden;
+      padding: var(--space-2);
+
+      &__label,
+      &__badge {
+        display: none;
+      }
+    }
   }
 }
 
@@ -32,6 +41,10 @@
   border-bottom: 1px solid var(--color-sidebar-border);
   text-decoration: none;
   flex-shrink: 0;
+
+  &:hover {
+    text-decoration: none;
+  }
 
   &-icon {
     width: 36px;
@@ -53,6 +66,7 @@
     color: var(--color-sidebar-logo-text);
     letter-spacing: -0.025em;
     white-space: nowrap;
+    text-decoration: none;
   }
 }
 

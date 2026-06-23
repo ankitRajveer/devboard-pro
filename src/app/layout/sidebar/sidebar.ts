@@ -18,67 +18,7 @@ interface NavSection {
   selector: 'app-sidebar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
-  template: `
-    <nav class="sidebar" [class.collapsed]="collapsed()">
-
-      <!-- Logo -->
-      <a class="sidebar__logo" routerLink="/dashboard">
-        <div class="sidebar__logo-icon">D</div>
-        <span class="sidebar__logo-text">DevBoard Pro</span>
-      </a>
-
-      <!-- Navigation -->
-      <div class="sidebar__nav">
-        @for (section of navSections; track section.title) {
-          <div class="sidebar__section">
-            <p class="sidebar__section-title">{{ section.title }}</p>
-
-            @for (item of section.items; track item.route) {
-              <a
-                class="sidebar__nav-item"
-                [routerLink]="item.route"
-                routerLinkActive="active"
-              >
-                <i class="bi {{ item.icon }} sidebar__nav-item__icon"></i>
-                <span class="sidebar__nav-item__label">{{ item.label }}</span>
-                @if (item.badge) {
-                  <span class="sidebar__nav-item__badge">{{ item.badge }}</span>
-                }
-              </a>
-            }
-          </div>
-        }
-      </div>
-
-      <!-- Footer / User -->
-      <div class="sidebar__footer">
-        <!-- Collapse toggle -->
-        <button
-          class="sidebar__nav-item"
-          (click)="toggleCollapse.emit()"
-          style="margin-bottom: var(--space-2)"
-        >
-          <i
-            class="bi sidebar__nav-item__icon"
-            [class.bi-layout-sidebar]="!collapsed()"
-            [class.bi-layout-sidebar-reverse]="collapsed()"
-          ></i>
-          <span class="sidebar__nav-item__label">Collapse</span>
-        </button>
-
-        <!-- User info -->
-        <div class="sidebar__user">
-          <div class="sidebar__user-avatar">
-            {{ authService.userInitials() }}
-          </div>
-          <div>
-            <p class="sidebar__user-name">{{ authService.user()?.name }}</p>
-            <p class="sidebar__user-role">{{ authService.user()?.role }}</p>
-          </div>
-        </div>
-      </div>
-    </nav>
-  `,
+  templateUrl: './sidebar.html',
 })
 export class Sidebar {
   // Signals API
